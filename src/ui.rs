@@ -150,18 +150,8 @@ impl Ui {
         let lenguaje = file.split('.').last().unwrap();
         let lang = obtener_nombre_lenguaje(lenguaje);
 
-        let format = format!(
-            "{:?} {}  {}KB  {}:{}  x:{} y:{} realx:{}   realy:{}",
-            lang,
-            per,
-            metadata.len(),
-            self.idx_y,
-            self.archivo.buffer.len(),
-            self.x,
-            self.y,
-            self.idx_x,
-            self.idx_y,
-        );
+        let format = format!("'{}' {}KB  ", self.archivo.path, metadata.len(),);
+        let right = format!("{:?} {} {}/{} ", lang, per, self.idx_x, self.idx_y);
 
         let x = getmaxx(self.win);
         mvwhline(self.win, self.h - 2, 1, 32, x - 2);
@@ -171,6 +161,7 @@ impl Ui {
             mvwprintw(self.win, self.h - 2, 2, "INSERT");
         }
         mvwprintw(self.win, self.h - 2, 10, &format);
+        mvwprintw(self.win, self.h - 2, self.w - right.len() as i32, &right);
         wmove(self.win, self.y, self.x);
         wrefresh(self.win);
     }
@@ -201,7 +192,9 @@ impl Ui {
                 exit(0);
             }
             _ => {
-                //mvwprintw(self.win, 10, 10, &self.command);
+                let f = format!("Command not found: {}", self.command);
+                self.display();
+                mvwprintw(self.win, self.h - 2, 1, &f);
             }
         }
     }
