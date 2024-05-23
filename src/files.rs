@@ -37,7 +37,7 @@ impl Archivo {
         let buffer: Vec<Vec<Word>> = content
             .lines()
             .map(|line| {
-                line.split_whitespace()
+                line.split(' ')
                     .map(|txt| Word::word_from_lang(txt, &lang))
                     .collect()
             })

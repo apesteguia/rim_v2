@@ -67,10 +67,10 @@ pub fn reserved_words(l: &Lenguaje) -> Vec<String> {
         .map(|s| s.to_string())
         .collect(),
         _ => vec![
-            "if ", "while", "else", "else", "let", "var", "loop", "pub", "public", "private",
-            "priv", "class", "fn", "fun", "func", "const", "import", "try", "catch", "new",
-            "static", "void", "int", "char", "string", "String", "float", "double", "number",
-            "bool", "boolean", "when", "with", "where", "true", "false",
+            "if", "while", "else", "let", "var", "loop", "pub", "public", "private", "priv",
+            "class", "fn", "fun", "func", "const", "import", "try", "catch", "new", "static",
+            "void", "int", "return", "char", "string", "String", "float", "double", "number",
+            "bool", "boolean", "when", "with", "where", "true", "false", "#include", "#define",
         ]
         .iter()
         .map(|s| s.to_string())
